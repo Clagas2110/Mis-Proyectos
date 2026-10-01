@@ -1,0 +1,122 @@
+========================================================
+  RUTINA PARA ENCENDER MI CODESPACE DESDE CERO
+  (GitHub Codespaces + Ollama + Continue)
+========================================================
+
+
+--------------------------------------------------------
+PASO 1 - ABRIR EL CODESPACE
+--------------------------------------------------------
+1. Abre tu navegador.
+2. Ve a:  github.com/codespaces
+3. Inicia sesion en GitHub si te lo pide.
+4. En la lista veras tu Codespace (nombre tipo "effective fishstick").
+5. Haz clic en su NOMBRE para abrirlo.
+6. Espera unos segundos a que "despierte" y cargue el editor VS Code.
+
+   (Otra forma: entra a tu repositorio "Mis-Proyectos" ->
+    boton verde "Code" -> pestana "Codespaces" -> clic en el nombre.)
+
+
+--------------------------------------------------------
+PASO 2 - ABRIR LA TERMINAL
+--------------------------------------------------------
+Si no ves la terminal abajo:
+   - Menu  (arriba a la izquierda) -> Terminal -> New Terminal
+   - O usa el atajo:  Ctrl + ´   (la tecla del acento, al lado del Enter)
+
+
+--------------------------------------------------------
+PASO 3 - ARRANCAR OLLAMA
+--------------------------------------------------------
+En la terminal escribe y pulsa Enter:
+
+   ollama serve &
+
+   NOTA: Si aparece el mensaje "address already in use",
+         significa que Ollama YA estaba corriendo. Perfecto,
+         no hagas nada mas, ignoralo.
+
+
+--------------------------------------------------------
+PASO 4 - COMPROBAR QUE TUS MODELOS ESTAN
+--------------------------------------------------------
+En la terminal escribe y pulsa Enter:
+
+   ollama list
+
+Deberias ver tus 3 modelos:
+   - llama3.2:1b     (el mas rapido / ligero)
+   - qwen2.5:1.5b    (bueno para codigo)
+   - gemma2:2b       (mas elaborado, un poco mas lento)
+
+
+--------------------------------------------------------
+PASO 5 - ABRIR Y USAR CONTINUE (el asistente de IA)
+--------------------------------------------------------
+1. En la barra de iconos de la izquierda, haz clic en el icono
+   de "Continue".
+2. Si el panel esta muy estrecho, ensanchalo arrastrando su borde.
+3. Asegurate de estar en la pestana "Local" (no en "API Key").
+4. En el selector de modelo (abajo en el chat) elige:
+      llama3.2:1b     <- recomendado para que vaya rapido
+5. Escribe tu pregunta en la caja de texto y envia.
+
+
+========================================================
+  RESUMEN ULTRA RAPIDO
+========================================================
+1) github.com/codespaces  -> clic en tu Codespace
+2) Terminal:  ollama serve &
+3) Continue -> pestana "Local" -> elegir modelo -> preguntar
+
+
+========================================================
+  SI APARECE UN ERROR "unexpected EOF" O VA LENTO
+========================================================
+(Es falta de memoria; tu maquina gratuita es modesta.)
+
+- Cambia al modelo mas liviano:  llama3.2:1b
+- Inicia un chat nuevo con el boton "+" del panel de Continue.
+- Si sigue fallando, libera memoria en la terminal:
+      ollama stop gemma2:2b
+      ollama stop qwen2.5:1.5b
+- Para ver memoria libre:
+      free -h
+
+
+========================================================
+  GUARDAR MI TRABAJO (para no perderlo)
+========================================================
+Cuando crees o modifiques archivos y quieras conservarlos,
+en la terminal:
+
+   git add .
+   git commit -m "describe lo que hiciste"
+   git push
+
+(O usa el panel "Control de codigo fuente": el icono de los
+ tres circulos conectados en la barra izquierda.)
+
+
+========================================================
+  APAGAR AL TERMINAR (para cuidar mis horas gratis)
+========================================================
+- Ve a:  github.com/codespaces
+- Tres puntos (...) al lado de tu Codespace -> "Stop codespace"
+
+(Tienes 60 horas gratis al mes. El Codespace solo consume
+ horas mientras esta activo.)
+
+
+========================================================
+  RECORDATORIOS IMPORTANTES
+========================================================
+- Codespaces SI guarda todo: Ollama, los modelos y las
+  extensiones siguen instalados al volver. Solo hay que
+  volver a lanzar "ollama serve &".
+- NO descargues modelos grandes (ej. llama3.1:8b): tu maquina
+  de 2 nucleos no los soporta bien.
+- NUNCA necesitas poner claves de API (OpenAI/Anthropic/Gemini):
+  Ollama es local y gratis. Usa siempre la pestana "Local".
+========================================================
